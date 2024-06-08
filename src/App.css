@@ -138,6 +138,8 @@
 
 .locationItem-img{
   height: 20rem;
+  border: 1px solid rgb(225, 225, 225);
+  border-radius: 0.5rem;
 }
 
 .locationItem img {
@@ -270,7 +272,7 @@
   padding-right: 1rem;
 }
 
-.searchItem.current-hotel {
+.searchItem.current-hotle {
   border: 3px solid var(--primary-700);
   border-radius: 1rem;
 }

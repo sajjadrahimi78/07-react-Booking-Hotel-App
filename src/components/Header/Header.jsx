@@ -49,7 +49,6 @@ function Header() {
       destination,
       options: JSON.stringify(options),
     });
-    console.log(typeof encodedParams);
 
     // notes when we want use it if property be object -> to string => setSearchParams(encodedParams);
 
