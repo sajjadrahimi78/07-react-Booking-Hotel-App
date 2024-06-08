@@ -17,7 +17,10 @@ import {
 
 function Header() {
   // ============================================ states ============================================
-  const [destination, setDestination] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [destination, setDestination] = useState(
+    searchParams.get("destination") || ""
+  );
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({ adult: 1, children: 0, room: 1 });
   const [date, setDate] = useState([
@@ -29,7 +32,6 @@ function Header() {
   ]);
   const [openDate, setOpenDate] = useState(false);
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
 
   // =========================================== handle func ===========================================
 
