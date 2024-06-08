@@ -1,7 +1,7 @@
 import useFeach from "../../hooks/useFeach";
 
 function LocationList() {
-  const { data, isLoading } = useFeach("http://localhost:5000/hotles", "");
+  const { data, isLoading } = useFeach("http://localhost:5000/hotels", "");
 
   if (isLoading) <p>Loading...</p>;
 

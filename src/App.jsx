@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import LocationList from "./components/LocationList/LocationList";
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./components/AppLayout/AppLayout";
+import Hotels from "./components/Hotels/Hotels";
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
       <Routes>
         <Route path="/" element={<LocationList />} />
         {/* nested route */}
-        <Route path="/hotles" element={<AppLayout />}>
-          <Route index element={<div>Hotles</div>} />
-          <Route path=":id" element={<div>single hotles</div>} />
+        <Route path="/hotels" element={<AppLayout />}>
+          {/* <Route index element={<div>Hotels</div>} /> */}
+          <Route index element={<Hotels />} />
+          <Route path=":id" element={<div>single hotels</div>} />
         </Route>
       </Routes>
     </div>

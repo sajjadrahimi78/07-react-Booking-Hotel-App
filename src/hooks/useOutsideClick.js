@@ -10,7 +10,6 @@ function useOutsideClick(ref, cb, exceptionId) {
         !ref.current.contains(e.target) &&
         e.target.id !== exceptionId
       ) {
-        console.log(exceptionId);
         cb();
       }
     }

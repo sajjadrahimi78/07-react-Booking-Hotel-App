@@ -52,7 +52,7 @@ function Header() {
 
     // notes when we want use it if property be object -> to string => setSearchParams(encodedParams);
 
-    navigate({ pathname: "/hotles", search: encodedParams.toString() });
+    navigate({ pathname: "/hotels", search: encodedParams.toString() });
   };
 
   // =================================================================================================

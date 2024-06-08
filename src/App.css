@@ -272,7 +272,7 @@
   padding-right: 1rem;
 }
 
-.searchItem.current-hotle {
+.searchItem.current-hotel {
   border: 3px solid var(--primary-700);
   border-radius: 1rem;
 }
