@@ -17,7 +17,6 @@ function App() {
           <Route path="/" element={<LocationList />} />
           {/* nested route */}
           <Route path="/hotels" element={<AppLayout />}>
-            {/* <Route index element={<div>Hotels</div>} /> */}
             <Route index element={<Hotels />} />
             <Route path=":id" element={<div>single hotels</div>} />
           </Route>
