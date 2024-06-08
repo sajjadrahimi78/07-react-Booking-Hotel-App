@@ -1,3 +1,4 @@
+// ============================================ imports ============================================
 import { MdLocationOn } from "react-icons/md";
 import { HiCalendar, HiMinus, HiPlus, HiSearch } from "react-icons/hi";
 import { useRef, useState } from "react";
@@ -6,11 +7,19 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRange } from "react-date-range";
 import { format } from "date-fns";
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
+
+// ============================================ components ============================================
 
 function Header() {
+  // ============================================ states ============================================
   const [destination, setDestination] = useState("");
   const [openOptions, setOpenOptions] = useState(false);
-  const [option, setOption] = useState({ adult: 1, children: 0, room: 1 });
+  const [options, setOptions] = useState({ adult: 1, children: 0, room: 1 });
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -19,15 +28,35 @@ function Header() {
     },
   ]);
   const [openDate, setOpenDate] = useState(false);
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // =========================================== handle func ===========================================
 
   const handleOptions = (name, operation) => {
-    setOption((prev) => {
+    setOptions((prev) => {
       return {
         ...prev,
-        [name]: operation === "inc" ? option[name]++ : option[name]--, //???
+        [name]: operation === "inc" ? options[name]++ : options[name]--, //???
       };
     });
   };
+
+  // ???
+  const handleSearch = () => {
+    const encodedParams = createSearchParams({
+      date: JSON.stringify(date),
+      destination,
+      options: JSON.stringify(options),
+    });
+    console.log(typeof encodedParams);
+
+    // notes when we want use it if property be object -> to string => setSearchParams(encodedParams);
+
+    navigate({ pathname: "/hotles", search: encodedParams.toString() });
+  };
+
+  // =================================================================================================
 
   return (
     <div className="header">
@@ -49,7 +78,10 @@ function Header() {
         <div className="headerSearchItem">
           <HiCalendar className="headerIcon dateIcon" />
           <div className="dateDropDown" onClick={() => setOpenDate(!openDate)}>
-            {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
+            {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(
+              date[0].endDate,
+              "MM/dd/yyyy"
+            )}`}
           </div>
           {openDate && (
             <DateRange
@@ -65,13 +97,13 @@ function Header() {
 
         <div className="headerSearchItem">
           <div id="optionDropDown" onClick={() => setOpenOptions(!openOptions)}>
-            {option.adult} adult &bull; {option.children} children &bull;{" "}
-            {option.room} room
+            {options.adult} adult &bull; {options.children} children &bull;{" "}
+            {options.room} room
           </div>
           {openOptions && (
             <GuestOptionList
               handleOptions={handleOptions}
-              option={option}
+              options={options}
               setOpenOptions={setOpenOptions}
             />
           )}
@@ -79,7 +111,7 @@ function Header() {
         </div>
 
         <div className="headerSearchItem">
-          <button className="headerSearchBtn">
+          <button className="headerSearchBtn" onClick={handleSearch}>
             <HiSearch className="headerIcon" />
           </button>
         </div>
@@ -90,7 +122,9 @@ function Header() {
 
 export default Header;
 
-function GuestOptionList({ option, handleOptions, setOpenOptions }) {
+// ========================================== mini components ==========================================
+
+function GuestOptionList({ options, handleOptions, setOpenOptions }) {
   const optionsRef = useRef();
 
   useOutsideClick(optionsRef, () => setOpenOptions(false), "optionDropDown");
@@ -100,26 +134,26 @@ function GuestOptionList({ option, handleOptions, setOpenOptions }) {
       <OptionItem
         handleOptions={handleOptions}
         type="adult"
-        option={option}
+        options={options}
         minLimit={1}
       />
       <OptionItem
         handleOptions={handleOptions}
         type="children"
-        option={option}
+        options={options}
         minLimit={0}
       />
       <OptionItem
         handleOptions={handleOptions}
         type="room"
-        option={option}
+        options={options}
         minLimit={1}
       />
     </div>
   );
 }
 
-function OptionItem({ option, type, minLimit, handleOptions }) {
+function OptionItem({ options, type, minLimit, handleOptions }) {
   return (
     <div className="guestOptionItem">
       <span className="optionText">{type}</span>
@@ -127,11 +161,11 @@ function OptionItem({ option, type, minLimit, handleOptions }) {
         <button
           onClick={() => handleOptions(type, "dec")}
           className="optionCounterBtn"
-          disabled={option[type] <= minLimit}
+          disabled={options[type] <= minLimit}
         >
           <HiMinus className="icon" />
         </button>
-        <span className="optionCounterNumber">{option[type]}</span>
+        <span className="optionCounterNumber">{options[type]}</span>
         <button
           onClick={() => handleOptions(type, "inc")}
           className="optionCounterBtn"

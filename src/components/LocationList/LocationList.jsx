@@ -12,7 +12,9 @@ function LocationList() {
         {data.map((item) => {
           return (
             <div className="locationItem" key={item.id}>
-              <img src={item.thumbnail_url} alt={item.name} />
+              <div className="locationItem-img">
+              <img src={item.thumbnail_url} alt={item.name}/>
+              </div>
               <div className="locationItemDesc">
                 <p className="location">{item.smart_location}</p>
                 <p className="name">{item.name}</p>
