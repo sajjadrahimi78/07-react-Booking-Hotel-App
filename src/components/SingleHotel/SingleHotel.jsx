@@ -1,21 +1,26 @@
 import { useParams } from "react-router-dom";
-import useFeach from "../../hooks/useFeach";
+import { useHotels } from "../context/HotelsProvider";
+import { useEffect } from "react";
 
 function SingleHotel() {
   const { id } = useParams();
-  const { data, isLoading } = useFeach(`http://localhost:5000/hotels/${id}`, "");
+  const { getHotel, isLoadingCurrentHotel, currentHotel } = useHotels();
 
-  if (isLoading) return <div>Loading ...</div>;
+  useEffect(() => {
+    getHotel(id);
+  }, [id]);
+
+  if (isLoadingCurrentHotel) return <div>Loading ...</div>;
 
   return (
     <div className="room">
       <div className="roomDetail">
-        <h2>{data.name}</h2>
+        <h2>{currentHotel?.name}</h2>
         <div>
-          {data.number_of_reviews} reviews &bull; {data.smart_location}
+          {currentHotel?.number_of_reviews} reviews &bull; {currentHotel?.smart_location}
         </div>
         <div className="locationItem-img">
-        <img src={data.thumbnail_url} alt={data.name} />
+        <img src={currentHotel?.thumbnail_url} alt={currentHotel?.name} />
         </div>
       </div>
     </div>
