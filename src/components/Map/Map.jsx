@@ -9,12 +9,11 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import useGeoLocation from "../../hooks/useGeoLocation";
+import useUrlLocation from "../../hooks/useUrlLocation";
 
-function Map({markerLocations}) {
+function Map({ markerLocations }) {
   const [mapCenter, setMapCenter] = useState([52.366527, 4.868144]);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const lat = searchParams.get("lat");
-  const long = searchParams.get("long");
+  const [lat, long] = useUrlLocation();
   const {
     isLoading: isLoadingPosition,
     position: geoLocationPosition,
@@ -67,7 +66,8 @@ function ChengeCenter({ position }) {
 function DetectClick() {
   const navigate = useNavigate();
   useMapEvent({
-    click: (e) => navigate(`/bookmark?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+    click: (e) =>
+      navigate(`/bookmark/add?lat=${e.latlng.lat}&long=${e.latlng.lng}`),
   });
   return null;
 }
