@@ -1368,6 +1368,33 @@
       "longitude": "67.78003711374224",
       "host_location": "Baba Kot Pakistan",
       "id": 8
+    },
+    {
+      "cityName": "Nasim Shahr",
+      "country": "Iran (Islamic Republic of)",
+      "countryCode": "IR",
+      "latitude": "35.561199679750345",
+      "longitude": "51.16736810886595",
+      "host_location": "Nasim Shahr Iran (Islamic Republic of)",
+      "id": 9
+    },
+    {
+      "cityName": "Tura",
+      "country": "Russian Federation (the)",
+      "countryCode": "RU",
+      "latitude": "64.61236153498596",
+      "longitude": "98.30489931370433",
+      "host_location": "Tura Russian Federation (the)",
+      "id": 10
+    },
+    {
+      "cityName": "Yazd",
+      "country": "Iran (Islamic Republic of)",
+      "countryCode": "IR",
+      "latitude": "31.85598869810625",
+      "longitude": "54.3299606731504",
+      "host_location": "Yazd Iran (Islamic Republic of)",
+      "id": 11
     }
   ]
 }

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import useUrlLocation from "../../hooks/useUrlLocation";
 import { useEffect, useState } from "react";
-import useFeach from "../../hooks/useFeach";
 import axios from "axios";
 import ReactCountryFlag from "react-country-flag";
+import { useBookmark } from "../context/BootmarkListContext";
 
 const BASE_GEOCODING_URL =
   "https://api.bigdatacloud.net/data/reverse-geocode-client";
@@ -26,6 +26,7 @@ function AddNewBookmark() {
   const [countryCode, setCountryCode] = useState("");
   const [isLoadingGeoCoding, setIsLoadingGeoCoding] = useState(false);
   const [geoCodingError, setGeoCodingError] = useState(null);
+  const { createBookmark } = useBookmark();
 
   useEffect(() => {
     if (!lat || !long) return;
@@ -58,13 +59,29 @@ function AddNewBookmark() {
     fetchLocationData();
   }, [lat, long]);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!cityName || !country) return;
+
+    const newBookmark = {
+      cityName,
+      country,
+      countryCode,
+      latitude: lat,
+      longitude: long,
+      host_location: cityName + " " + country,
+    };
+    await createBookmark(newBookmark);
+    navigate("/bookmark")
+  };
+
   if (isLoadingGeoCoding) return <div>Loading...</div>;
   if (geoCodingError) return <p>{geoCodingError}</p>;
 
   return (
     <div>
       <h2>Bookmark New Location</h2>
-      <form className="form">
+      <form className="form" onSubmit={handleSubmit}>
         <div className="formControl">
           <label htmlFor="cityName">CityName</label>
           <input
@@ -84,8 +101,8 @@ function AddNewBookmark() {
             name="country"
             id="country"
           />
-          <ReactCountryFlag className="flag" countryCode="countryCode" svg/>
-          {/* <span className="flag">{countryCode}</span> */} 
+          <ReactCountryFlag className="flag" countryCode="countryCode" svg />
+          {/* <span className="flag">{countryCode}</span> */}
         </div>
         <div className="buttons">
           <button
