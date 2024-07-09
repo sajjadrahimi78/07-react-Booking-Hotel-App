@@ -5,16 +5,14 @@ import ReactCountryFlag from "react-country-flag";
 
 function SingleBookmark() {
   const { id } = useParams();
-  const { getBookmark, isLoading, currentBookmark } =
-    useBookmark();
+  const { getBookmark, isLoading, currentBookmark } = useBookmark();
   const navigate = useNavigate();
 
   useEffect(() => {
     getBookmark(id);
   }, [id]);
 
-  if (isLoading || !currentBookmark)
-    return <div>Loading ...</div>;
+  if (isLoading || !currentBookmark) return <div>Loading ...</div>;
 
   const handleBack = () => {
     navigate(-1);
@@ -34,11 +32,13 @@ function SingleBookmark() {
             currentBookmark.id === currentBookmark?.id ? "current-bookmark" : ""
           }`}
         >
-          <ReactCountryFlag countryCode={currentBookmark.countryCode} svg />
-          &nbsp; <strong>{currentBookmark.cityName}</strong> &nbsp;
-          <span>{currentBookmark.country}</span>
+          <div>
+            <ReactCountryFlag countryCode={currentBookmark.countryCode} svg />
+            &nbsp; <strong>{currentBookmark.cityName}</strong> &nbsp;
+            <span>{currentBookmark.country}</span>
+          </div>
         </div>
-      </div> 
+      </div>
     </div>
   );
 }

@@ -1325,76 +1325,13 @@
   ],
   "bookmarks": [
     {
-      "cityName": "Abalessa",
-      "country": "Algeria",
-      "countryCode": "DZ",
-      "latitude": "23.18455079512732",
-      "longitude": "3.795523257510883",
-      "host_location": "Abalessa Algeria",
+      "cityName": "Garmsar",
+      "country": "Iran (Islamic Republic of)",
+      "countryCode": "IR",
+      "latitude": "34.604753579290985",
+      "longitude": "52.145287202607186",
+      "host_location": "Garmsar Iran (Islamic Republic of)",
       "id": 1
-    },
-    {
-      "cityName": "Mahidasht",
-      "country": "Iran (Islamic Republic of)",
-      "countryCode": "IR",
-      "latitude": "34.32869425037187",
-      "longitude": "46.724183117022086",
-      "host_location": "Mahidasht Iran (Islamic Republic of)",
-      "id": 4
-    },
-    {
-      "cityName": "Sanandaj",
-      "country": "Iran (Islamic Republic of)",
-      "countryCode": "IR",
-      "latitude": "35.31372444726279",
-      "longitude": "47.03114358752335",
-      "host_location": "Sanandaj Iran (Islamic Republic of)",
-      "id": 5
-    },
-    {
-      "cityName": "A Dakhla Oasis",
-      "country": "Egypt",
-      "countryCode": "EG",
-      "latitude": "25.02090651422749",
-      "longitude": "29.09059588509316",
-      "host_location": "A Dakhla Oasis Egypt",
-      "id": 7
-    },
-    {
-      "cityName": "Baba Kot",
-      "country": "Pakistan",
-      "countryCode": "PK",
-      "latitude": "28.43528783183169",
-      "longitude": "67.78003711374224",
-      "host_location": "Baba Kot Pakistan",
-      "id": 8
-    },
-    {
-      "cityName": "Nasim Shahr",
-      "country": "Iran (Islamic Republic of)",
-      "countryCode": "IR",
-      "latitude": "35.561199679750345",
-      "longitude": "51.16736810886595",
-      "host_location": "Nasim Shahr Iran (Islamic Republic of)",
-      "id": 9
-    },
-    {
-      "cityName": "Tura",
-      "country": "Russian Federation (the)",
-      "countryCode": "RU",
-      "latitude": "64.61236153498596",
-      "longitude": "98.30489931370433",
-      "host_location": "Tura Russian Federation (the)",
-      "id": 10
-    },
-    {
-      "cityName": "Yazd",
-      "country": "Iran (Islamic Republic of)",
-      "countryCode": "IR",
-      "latitude": "31.85598869810625",
-      "longitude": "54.3299606731504",
-      "host_location": "Yazd Iran (Islamic Republic of)",
-      "id": 11
     }
   ]
 }
