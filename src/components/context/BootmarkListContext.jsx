@@ -16,9 +16,10 @@ function BookmarkListProvider({ children }) {
 
   async function getBookmark(id) {
     setIsLoadingCurrentBookmark(true);
+    setCurrentBookmark(null);
     try {
       const { data } = await axios.get(`${BASE_URL}/bookmarks/${id}`);
-      setCurrentHotel(data);
+      setCurrentBookmark(data);
       setIsLoadingCurrentBookmark(false);
     } catch (error) {
       toast.error(error.message);
