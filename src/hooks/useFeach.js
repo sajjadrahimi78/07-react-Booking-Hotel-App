@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export default function useFeach(url, query = "") {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ export default function useFeach(url, query = "") {
         setData(data);
       } catch (err) {
         setData([]);
-        toastr.error(err?.message);
+        toast.error(err?.message);
       } finally {
         setIsLoading(false);
       }
