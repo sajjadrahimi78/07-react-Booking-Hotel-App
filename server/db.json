@@ -1332,6 +1332,24 @@
       "longitude": "52.145287202607186",
       "host_location": "Garmsar Iran (Islamic Republic of)",
       "id": 1
+    },
+    {
+      "cityName": "Amsterdam",
+      "country": "Netherlands (Kingdom of the)",
+      "countryCode": "NL",
+      "latitude": "52.373304712129915",
+      "longitude": "4.89164301384252",
+      "host_location": "Amsterdam Netherlands (Kingdom of the)",
+      "id": 3
+    },
+    {
+      "cityName": "Peixoto de Azevedo",
+      "country": "Brazil",
+      "countryCode": "BR",
+      "latitude": "-10.356660573603767",
+      "longitude": "-53.17156756022085",
+      "host_location": "Peixoto de Azevedo Brazil",
+      "id": 4
     }
   ]
 }
